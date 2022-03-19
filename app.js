@@ -24,8 +24,8 @@ function addKitten(event) {
     let kitty = {
       id: kitttenId,
       name: namedKitten,
-      mood: "Happy",
-      affection: 9,
+      mood: "Tolerant",
+      affection: 5,
       image: "https://robohash.org/" + namedKitten + "?set=set4"
   }
 
