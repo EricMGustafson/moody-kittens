@@ -5,15 +5,16 @@
 let kittens = [];
 loadKittens()
 drawKittens()
-/**
- * Called when submitting the new Kitten Form
- * This method will pull data from the form
- * use the provided function to give the data an id
- * you can use robohash for images
- * https://robohash.org/<INSERTCATNAMEHERE>?set=set4
- * then add that data to the kittens list.
- * Then reset the form
- */
+welcomeCard()
+
+function welcomeCard() {
+  if (kittens.length > 0) {
+    document.getElementById("welcome").remove()
+    document.getElementById("addKitten").classList.remove("hidden")
+    document.getElementById("kittens").classList.remove("hidden")
+  }
+}
+
 function addKitten(event) {
   event.preventDefault()
   
@@ -35,20 +36,12 @@ function addKitten(event) {
   form.reset()
   drawKittens()
 }
-/**
- * Converts the kittens array to a JSON string then
- * Saves the string to localstorage at the key kittens
- */
+
 function saveKittens() {
   window.localStorage.setItem("kittens", JSON.stringify(kittens))
   drawKittens()
 }
 
-/**
- * Attempts to retrieve the kittens string from localstorage
- * then parses the JSON string into an array. Finally sets
- * the kittens array to the retrieved array
- */
 function loadKittens() {
   let storedKittens = JSON.parse(window.localStorage.getItem("kittens"))
   if (storedKittens) {
@@ -67,10 +60,6 @@ function deleteKitten(kittenId) {
   drawKittens()
 }
 
-
-/**
- * Draw all of the kittens to the kittens element
- */
 function drawKittens() {
   let kittenElement = document.getElementById("kittens")
   let kittenTemplate = ""
@@ -205,7 +194,6 @@ function setKittenMood(kitten) {
 function getStarted() {
   document.getElementById("welcome").remove();
   document.getElementById("addKitten").classList.remove("hidden")
-  document.getElementById("kittens").classList.remove("hidden")
   drawKittens();
 }
 
